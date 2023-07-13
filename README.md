@@ -1,101 +1,116 @@
-# Forecasting-Analysis
-**A project that uses ARIMA and LSTM models to predict future outcomes based on historical data.**
+# Forecasting Analysis Using ARIMA and LSTM Models
 
-- This Project focus on two main parts which are the Hardware Implementation of 
-Weather Monitoring System and Analysis of recorded values, to predict the future 
-elements of required parameters. In this project we focused on Temperature, 
-Humidity, Pressure.
-By using this sensors to monitor the weather parameter that are temperature, 
-humidity and Pressure the system will be able to display the weather condition 
-by an analysis about the current weather with the sensor value data. All the data 
-will be control by a microcontroller ESP8266 an via wifi/hotspot we send data to 
-ThingSpeak. The data collected will be analyse and compare it with required 
-Meteorological Data Sheets to ensure the precise of data and weather condition 
-on current condition. The Internet of Things (IoT) will connect the system with 
-the user wireless and online without the need of checking manually.
+## Abstract
 
-### Weather Monitoring System Block Diagram
+The project utilizes ARIMA and LSTM models to accurately predict future temperature values for various fields. The proposed method aims to improve traditional time series forecasting methods by utilizing both models' strengths. The accuracy of the proposed method is compared to traditional models, and results show an improvement in forecasting accuracy.
 
-![image](https://user-images.githubusercontent.com/122866331/212913309-642f7a9d-5214-4872-a058-54a0f217095c.png)
+## Introduction
 
-### Hardware Development
+Our project aimed to create a weather monitoring system using IoT and machine learning techniques to predict future weather patterns based on temperature and humidity data collected over time. The system was designed using Node MCU and DHT11 sensors for accurate data collection and transfer. We employed two prediction models - ARIMA and LSTM - for detailed analysis of the collected data. The comparison of these models showed that the deep learning-based LSTM model performed better than the standard ARIMA model. Weather monitoring is important in various industries like agriculture, manufacturing, construction, and smart agriculture can be achieved using machine learning techniques.
 
-- The hardware selection is vital in this project hardware development process. 
-Every hardware components are necessary to be considered first before selected 
-to be utilized in the project. The components selection is according to the 
-advantages and characteristic of the component to fulfil the functionality of every 
-part used. For this project Node MCU, BMP180, DHT11, are used. Since we are 
-working only with the prototype of the real time implementation we can really 
-focus on the only essentials parameters which in our case will be temperature, 
-humidity and pressure. Also, these parameters proves to be very effective when 
-doing time series analysis as they are continuous in nature and they, to some 
-extent depends of their old values. Some photos of our hardware implementation 
-has been given below.
+## Objective
 
-![image](https://user-images.githubusercontent.com/122866331/212915503-50370a7e-3506-45db-9569-4b812184c8c0.png)
+The objective of this report is to present the key aspects and findings of the "Forecasting Analysis Using ARIMA and LSTM Models" project. The report aims to showcase the importance of accurate temperature and air quality forecasting, the proposed method's strengths and advantages over traditional methods, and the experimental results that demonstrate the method's effectiveness.
 
+## Literature Survey
 
-### Software Devlopment
+1. Reviewing different algorithms used for weather prediction, such as ARIMA, STL, SVR, random forest, neural networks.
+2. Exploring time series analysis techniques, such as decomposition, differencing, smoothing, and seasonality detection.
+3. Identifying commonly used evaluation metrics like RMSE, MAE, R-squared for model accuracy assessment.
+4. Investigating real-time accuracy and limitations of predictive models for weather forecasting.
+5. Reviewing comparative analysis of predictive models for weather forecasting to understand their strengths and weaknesses.
 
-- The next phase in our project was to make use of that data that we managed to 
-upload on ThingSpeak (since the amount of data we require for modelling is large 
-we took a dataset directly from Kaggle and the dataset link is in the reference 
-section). We used 2 of the most widely used models in order to get our 
-predictions.
-The first approach is Deep Learning based in which we have used RNN’s for this 
-purpose and particularly LSTM’s. Going for LSTM over any other DL model is 
-due the fact that it excels on retaining old time informations along with the new 
-data. The reason for this behaviour is the Horizontal line that passes through the 
-top of LSTM cell. 
-The second approach is the ARIMA modelling which is best suited for the case 
-of time series forecasting. There are three parameters which ARIMA is made of. 
-The first is Auto Regressive (p) which determines on how many previous lags the 
-new value depends on. The second is Integrated (d) which signifies what order of 
-differencing we need to take to make our data stationary and the last is Moving 
-Average (q) which determining the error of past lags which will have their affect 
-in predicting the new value. 
+## Timeline
+
+1. Weather Monitoring System - DECEMBER 2022
+2. Forecasting Analysis of Temperature Using LSTM & ARIMA - FEBRAUARY 2023
+3. Forecasting Analysis of Air Quality Using LSTM & ARMA - MARCH 2023
+4. Data Visualization - MARCH 2023
+
+## Weather Monitoring System
+
+### Block Diagram
+![image](https://github.com/Devazc/FALA/assets/122866331/41416eae-85fa-48a9-be36-76c6485a5247)
+
+### The Flow of Data Analysis
+![image](https://github.com/Devazc/FALA/assets/122866331/ba807018-7a95-46b0-8b4e-e162e7874cad) 
 
 
-### RESULTS
+## Forecasting Analysis Using LSTM
 
-> The output when we used LSTM to predict the value of temperature (We used past 48 
-values for each parameters, concatenated them along 1 axis and feed them into the 
-neural network to get the following output). Tough not perfect, we got the output 
-better than what we had initially expected. After a total of 37 epochs and with Adam 
-optimizer and a learning rate of 0.001 we got the following output. 
+### LSTM Model
 
-![image](https://user-images.githubusercontent.com/122866331/212918587-0e1a4791-fec4-4bbf-8fd4-006ca3a94c64.png)
+- LSTM (Long Short-Term Memory) is a type of neural network that excels in capturing long-term dependencies and patterns in sequential data.
+- In this project, we use LSTM to forecast future temperature values based on past observations.
+- The LSTM model is trained on historical temperature data and then used to predict the temperature values for a given time period.
 
-**Now, we had the question can we do better?** Exactly to answer this question we 
-switched to ARIMA modelling to get the outputs and compare between the two 
-algorithms.
+### Data Model and Architecture
+> Describing The Data
 
-![image](https://user-images.githubusercontent.com/122866331/212919541-e7cc5c5f-b6e5-4e37-ae9d-878f88e5e1ee.png)
+![image](https://github.com/Devazc/FALA/assets/122866331/a23f64de-f86c-4321-8a87-10808466987c)
 
-> This was the output when we have kept the differencing factor as 0, and fixed p and q
- as 2. Definitely this is not random and we have selected these values using the parial
- correlation function in python scipy module.
- 
- ### To Conclude
- 
- In this project we have successfully demonstrated an end to end implementation 
-of weather monitoring system. Also, we have tried to cover both grounds 
-hardware and software so the reader can correlate how the data is transmitted 
-from the use of Arduino to a cloud platform which in our case is thingspeak. 
-Later, we took that data and have done predictive modelling on that with the 
-help of two of the most widely used yet different algorithms. We then have 
-successfully compared the results of both of them in a graphical format which 
-can be seen in the Results and Discussion Section. Our model has advantage as 
-it case highly cost effective because all it needed was a few sensors for our 
-purpose and all the programming was done in Arduino IDE and Google 
-Colaboratory and we have managed to get satisfactory results. On the other 
-hand, since we have used only 2 sensors, we have suffered in the realtime 
-accuracy and this will need further improvement to become useful enough so 
-that it can be deployed on real world use cases.
+![image](https://github.com/Devazc/FALA/assets/122866331/acfa7b32-3d41-40c7-9516-55148a9f24f2)
 
 
+### Temperature Prediction (LSTM)
+
+![image](https://github.com/Devazc/FALA/assets/122866331/f20abd0f-5fed-4ab1-9689-ec7df42b0011)
+> As we can see predicted output is very much following the trend of actual output but definitely some room for improvements.  
 
 
+## Forecasting Analysis Using ARIMA
+
+### ARIMA Model
+
+- ARIMA, short for 'AutoRegressive Integrated Moving Average,' is a class of models that explains a given time series based on its own past values.
+- The key idea is that the current value of any time series data can be determined by its own past values.
+- For ARIMA models to work, the necessary condition is to have stationary data.
+
+### Modelling ARIMA
+
+- ARIMA, short for ‘Auto Regressive Integrated Moving Average’ is actually a class of models that ‘explains’ a given time series based on its own past values
+- The key idea is that the current value of any time series data can be determined by its own past values.
+- For ARIMA models to work the necessary condition is to have a stationary data.
+- Auto Regressive (AR) model is a specific type of regression model where, the dependent variable depends on past values of itself.
+- This necessarily means that the current values are correlated with values in the previous time-steps.
+- The AR equation is shown below:
+  
+![image](https://github.com/Devazc/FALA/assets/122866331/88709848-5ad4-4a43-bb58-a499beb8a640)
+
+- The respective weights(Ф1,Ф2 …Фp) of the corresponding lagged observations are decided by the correlation between lagged observation and the current observation.
+- This (p) is called the lag order. It represents the number of prior lag observations we include in the model i.e. the number of lags which have a significant correlation with the current observation.
+
+> Modelling ARIMA (Finding order of AR p)
+
+![image](https://github.com/Devazc/FALA/assets/122866331/8e6d1ce2-b44e-4800-a755-e93a5ae33b9d)
+
+
+### Temperature Prediction (ARIMA)
+
+![image](https://github.com/Devazc/FALA/assets/122866331/b647a825-f00a-4137-9d61-8a43af62cc20)
+
+> The Final predicted output and actual output of the Temperature.
+
+## Forecasting Analysis of Air Quality Index Using LSTM & ARIMA
+
+ - ### RNN LSTM Model - AQI Forecasting
 
 
 
+- ### SARIMAX
+
+
+
+- ### Air Quality Index (LSTM)
+
+
+
+- ### Air Quality Index (ARIMA)
+
+
+
+## Conclusion
+
+In conclusion, our project successfully utilizes ARIMA and LSTM models for accurate temperature and air quality forecasting. The LSTM model outperformed the ARIMA model in terms of accuracy. Accurate weather forecasting is crucial in various industries, and our proposed method shows promising results. By combining the strengths of both models, we can improve the accuracy of time series forecasting for temperature and air quality. Further research and experimentation can be conducted to enhance the models and explore other factors for more comprehensive weather prediction.
+
+---
